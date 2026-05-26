@@ -1,0 +1,85 @@
+peak_detection:
+  # NEW PARAMETERS - COPY THESE 3 LINES:
+  use_predefined_peaks: false
+  predefined_peak_list: "example.xlsx"
+
+  # Then your existing parameters below:
+  peak_height_threshold: 1000.0
+  peak_prominence: 100.0
+  min_peak_intensity_across_timepoints: 100
+  min_timepoints: 5
+  use_mz_width_range: true
+  mz_width_range: [3, 100]  # m/z units
+  snr_threshold: 0.001
+  snr_window_size: 200
+  baseline_correction: false
+  peak_detection_spectrum: "range"  # "first", "mean", or "median"
+  use_reference_cycle_normalization: true  # Set to true to use reference cycle normalization
+  cycle_range_start: 1  # null = use all cycles
+  cycle_range_end: 3
+  scan_string: "scan"
+  cycle_string: "cyc"
+
+analysis:
+  correlation_method: "pearson"  # "pearson", "spearman", or "kendall"
+  significance_threshold: 0.05
+  multiple_testing_method: "fdr_bh"
+  clustering_method: "kmeans"  # "hierarchical", "kmeans", or "dbscan"
+  n_clusters: 21
+  db_eps: 0.25
+  db_min_samples: 2
+  trend_significance: 0.05
+  oscillation_threshold: 2.0
+  bootstrap_samples: 0
+  confidence_level: 0.95
+
+
+output:
+  output_dir: "DIP2069slomo"
+  create_single_pdf: true
+  pdf_in_data_directory: true
+  create_subcluster_pdf: true  # Create a second PDF with subclustering results
+  export_subclusters: true
+  export_peak_features: true
+  export_format: 'excel'#"csv"  # or "excel"
+
+advanced:
+  # Sub-clustering parameters NOT NEEDED, VESTIGIAL
+  enable_subclustering: true
+  subcluster_large_clusters: true
+  subcluster_threshold: 30  # Subcluster any cluster with >30 peaks
+  n_subclusters: 5
+  subclustering_method: "dbscan"  # Best for MS data
+
+  # Peak overlap analysis
+  analyze_overlaps: true
+  overlap_threshold_mz: 1.0  # Consider peaks within 1 m/z as potentially overlapping
+  remove_overlapping_peaks: false  # Set to true to auto-remove
+  overlap_correlation_threshold: 0.9  # High correlation = likely the same peak
+
+  # Alternative clustering
+  use_trend_clustering: true  # Also try clustering by extracted features
+  trend_features: ["slope", "r_squared", "cv"]  # Features to extract
+  n_trend_clusters: 5
+
+  # Preprocessing options
+  detrend_before_clustering: false  # Remove linear trends
+  smooth_before_clustering: false  # Smooth noisy data
+  smoothing_window_size: 8
+
+  # Quality control
+  min_correlation_with_cluster: 0.6  # Reassign peaks below this threshold
+  reassign_uncorrelated_peaks: true
+
+visualization:
+  create_diagnostic_plots: true
+  max_peaks_to_plot: 500
+  plot_top_n_variable_peaks: 50
+  perform_pca_analysis: true
+  n_pca_components: 5
+  plot_pca_variance: true
+
+quality_control:
+  min_peak_quality_score: 0.0
+  remove_low_quality_peaks: false
+  quality_metrics: ["snr", "cv", "presence"]
