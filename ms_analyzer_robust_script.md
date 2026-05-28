@@ -2,8 +2,8 @@
 
 ## Setup
 
-1. Save the robust analyzer script as `ms_analyzer_robust.py`
-2. Save the configuration as `robust_config.yaml`
+1. Save the robust analyzer script as `Script2_analyzer.py`
+2. Save the configuration as `ms_analyzer_robust_config.yaml`
 3. Ensure all required packages are installed:
 
 ```bash
@@ -15,23 +15,23 @@ pip install numpy pandas scipy scikit-learn matplotlib seaborn statsmodels click
 ### Create Sample Configuration
 
 ```bash
-python ms_analyzer_robust.py --create-config "C:\dummy\path"
+python Script2_analyzer.py --create-config "C:\dummy\path"
 ```
 
 ### Run Analysis with Configuration
 
 ```bash
 # For your specific directory
-python ms_analyzer_robust_UPDATED251028.py "C:\Users\andre\OneDrive\Desktop\25PC\25Cd\25Cd16_Protease_KOs_1\250513_CdKOs1\13-2069_reDsaltSLOMO\SLOMO\TIMECOURSE_ANAL\TXT_0to16_masses" --config robust_config.yaml
+python Script2_analyzer.py "YOUR_DATA_DIRECTORY" --config ms_analyzer_robust_config.yaml
 
 # For any directory
-python ms_analyzer_robust.py "YOUR_DATA_DIRECTORY" --config robust_config.yaml
+python Script2_analyzer.py "YOUR_DATA_DIRECTORY" --config ms_analyzer_robust_config.yaml
 ```
 
 ### Specify Output Directory
  
 ```bash
-python ms_analyzer_robust.py "YOUR_DATA_DIRECTORY" --output "custom_results"
+python Script2_analyzer.py "YOUR_DATA_DIRECTORY" --output "custom_results"
 ```
 
 ## Key Improvements in Robust Version
