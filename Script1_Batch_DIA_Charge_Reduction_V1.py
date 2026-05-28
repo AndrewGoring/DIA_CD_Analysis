@@ -2175,20 +2175,20 @@ if __name__ == "__main__":
     # Define cycle length (in # scans/cycle) for your files
     cycle_length=140
     # this value should be actual value - 1, due to python indexing. Cycle length above is normal
-    scans_to_skip = [i for i in range(140) if (i >= 70)]#[32]#[i for i in range(140) if (i >= 70)]#[i for i in range(140) if (i >= 70)]#AscendPTCR[52]#[i for i in range(140) if (i >= 70)]
+    scans_to_skip = [i for i in range(140) if (i >= 70)]#[32]
     # Number of scans to average
     n_to_av = 5
     # Number of cycle rounds (e.g. time-points)
-    tot_avs = 1
+    tot_avs = 34
 
     # File path of directory with raw files
-    file_dir_path = 'C:/Users/andre/OneDrive/Desktop/25PC/25Cd/25Cd19_PTCR_Ascend_revisit25/260524_anal'#'C:/Users/andre/OneDrive/Desktop/25PC/25Cd/25Cd16_Protease_KOs_1/250513_CdKOs1/16-DIP0964_SLOMO/DATA/SLOMO'
+    file_dir_path = 'PATH TO DIRECTORY WITH RAW FILE(S)'#
     # Path to unidec configuration file (from normal unidec output, as "<filename>//<filename>_conf.dat")
-    conf_file = "Data_and_configs/SLOMO_ECCR_z20_conf.dat"
+    conf_file = "PATH TO UNIDEC CONFIGURATION FILE conf.dat"
 
     ### Other parameters
-    mz_grid_choice = 1  #I dont change this. Used for scan averaging
-    mass_grid = [10000, 60000, 5] #Used for script output. Must be within range of Unidec search mass and spacing
+    mz_grid_choice = 1  #Dont change this. Used for scan averaging. 1= adaptive bin estimation (ideal)
+    mass_grid = [10000, 60000, 5] #Used for aggregated mass output (not used by script 2). Must be within range of Unidec search mass and spacing
 
     # Unidec peak picking extraction/filtering parameters
     pick_peaks = True
